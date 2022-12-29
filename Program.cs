@@ -1,54 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace prime_num
+namespace perefect_num
 {
     internal class Program
     {
+        static bool isperefct (int number)
+        {
+            int sum = 0;
+            for (int i = 1; i < number; i++)
+            {
+                if (number % i == 0) sum = sum + 1;
+            }
+            if (sum == number) return true;
+            return false;
+
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter the lower bound of the range:");
-            int start = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter the upper bound of the range: ");
-            int end = int.Parse(Console.ReadLine());
+            Console.WriteLine("please Enter the first number");
+            int y = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("The prime numbers in the range are:");
-            for (int i = start; i <= end; i++)
+            Console.WriteLine("please Enter the seconed number");
+            int w = int.Parse(Console.ReadLine());
+
+            for (int i = y; i <= w; i++)
             {
-                bool isPrime = true;
-
-                if (i == 2 || i == 3)
-                {
-                    Console.WriteLine(i);
-                }
-                else if (i == 1 || i % 2 == 0)
-                {
-                    continue;
-                }
-                else
-                {
-                    for (int k = 3; k <= Math.Sqrt(i); k += 2)
-                    {
-                        if (i % k == 0)
-                        {
-                            isPrime = false;
-                            break;
-                        }
-                    }
-
-                    if (isPrime)
-                    {
-                        Console.WriteLine(i);
-                    }
-                }
-
-
+                if (isperefct(i)) Console.WriteLine("{0},", i);
             }
+            Console.ReadKey();
+
+
         }
+
     }
-}    
+}
